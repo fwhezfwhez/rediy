@@ -12,6 +12,7 @@ const ABORT = math.MaxInt32 - 10000
 
 type Context struct {
 	Conn    redis.Conn
+	Caller string
 	Command string
 	Key     string
 	Args    []interface{}
@@ -74,10 +75,15 @@ func (ctx *Context) addHandler(f func(ctx *Context)) {
 }
 
 func (ctx Context) Info() string {
-	b, _ := json.MarshalIndent(map[string]interface{}{
+	b, _ := json.MarshalIndent(ctx.InfoH(), "  ", "  ")
+	return string(b)
+}
+
+func (ctx Context) InfoH() map[string]interface{} {
+	return map[string]interface{}{
 		"command": ctx.Command,
 		"key":     ctx.Key,
 		"args":    ctx.Args,
-	}, "  ", "  ")
-	return string(b)
+		"caller":
+	}
 }

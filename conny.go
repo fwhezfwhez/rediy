@@ -33,8 +33,8 @@ func (c *Conny) Do(commandName string, args ...interface{}) (interface{}, error)
 	if !isString {
 		return c.Conn.Do(commandName, args...)
 	}
-
 	ctx := newContext()
+	ctx.Caller = caller(10)
 	ctx.Command = commandName
 	ctx.Args = args
 	ctx.Key = key

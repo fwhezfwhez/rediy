@@ -3,6 +3,7 @@ package rediy
 import (
 	"fmt"
 	"github.com/garyburd/redigo/redis"
+	"runtime"
 	"strings"
 	"time"
 )
@@ -16,7 +17,6 @@ func inCommand(command string, commands []string) bool {
 
 	return false
 }
-
 
 // server = "localhost:6379"
 // password= ""
@@ -60,4 +60,15 @@ func newPool(server, password string, db int) *redis.Pool {
 			return err
 		},
 	}
+}
+
+func caller(depth int) string {
+	var rs string
+
+	for i := 1; i < depth+1; i++ {
+		_, file, line, _ := runtime.Caller(i)
+		one := fmt.Sprintf("%s:%d\n", file, line)
+		rs += one
+	}
+	return rs
 }
