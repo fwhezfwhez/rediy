@@ -12,6 +12,7 @@ type RedisPooly struct {
 	Pool *redis.Pool
 }
 
+// 基于原始Pool,new一个rediy.Pool
 func NewRedisPooly(pool *redis.Pool) *RedisPooly {
 	return &RedisPooly{
 		Pool: pool,
