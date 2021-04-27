@@ -12,7 +12,7 @@ const ABORT = math.MaxInt32 - 10000
 
 type Context struct {
 	Conn    redis.Conn
-	Caller string
+	Caller  string
 	Command string
 	Key     string
 	Args    []interface{}
@@ -84,6 +84,6 @@ func (ctx Context) InfoH() map[string]interface{} {
 		"command": ctx.Command,
 		"key":     ctx.Key,
 		"args":    ctx.Args,
-		"caller":
+		"caller":  ctx.Caller,
 	}
 }
