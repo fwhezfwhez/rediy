@@ -1,0 +1,10 @@
+github.com/fwhezfwhez/cmap v1.2.1 h1:e+aqI3kNsniX0Oz5wu+V9AKsmtiGZOtduAfUblnKwjk=
+github.com/fwhezfwhez/cmap v1.2.1/go.mod h1:tqnUpMbyjbqQzAxxWB2lWy8e44k4j33jXlepzFCOD0Q=
+github.com/fwhezfwhez/errorx v1.0.0 h1:V092yVEgwaFBKGtrtc0p2fl+lGaSi/GNLnOHRBmgFZw=
+github.com/fwhezfwhez/errorx v1.0.0/go.mod h1:epOraH2nrfmf4JUao5290NFuXw9t6MZnzgwoW5guABE=
+github.com/fwhezfwhez/irr v0.0.0-20210406082319-0fad7ed6571d h1:+40Ei88YWWHLV8e2kv3/EJZH47T0DKjP7/pNS8k9EGM=
+github.com/fwhezfwhez/irr v0.0.0-20210406082319-0fad7ed6571d/go.mod h1:JGQX/FmQ64d5GcQLW5tfxV+YAsptOFxZ8NPzeeUXcU0=
+github.com/garyburd/redigo v1.6.2 h1:yE/pwKCrbLpLpQICzYTeZ7JsTA/C53wFTJHaEtRqniM=
+github.com/garyburd/redigo v1.6.2/go.mod h1:NR3MbYisc3/PwhQ00EMzDiPmrwpPxAn5GI05/YaO1SY=
+github.com/gofrs/uuid v4.0.0+incompatible h1:1SD/1F5pU8p29ybwgQSwpQk+mwdRrXCYuPhW6m+TnJw=
+github.com/gofrs/uuid v4.0.0+incompatible/go.mod h1:b2aQJv3Z4Fp6yNu3cdSllBxTCLRxnplIgP/c0N/04lM=
