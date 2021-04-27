@@ -6,7 +6,6 @@ import (
 )
 
 var Mode = "pro"
-var StopFrequencyProtecting = false
 
 var (
 	greenBg      = string([]byte{27, 91, 57, 55, 59, 52, 50, 109})

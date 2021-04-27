@@ -1,8 +1,6 @@
 ## rediy
 
-rediy 对redis包提供切面操作。
-
-- rediy内置了高频同key熔断(100w/10s)。该机制仅对`set` `setex` `setnx` `hset`命令有效。如不需要,设置rediy.StopFrequencyProtecting=true。
+rediy 对redis包提供切面操作
 
 ## 接入
 - 对新项目
@@ -107,6 +105,46 @@ func middleware2(c *rediy.Context) {
 func abort(c *rediy.Context) {
 	c.Abort("command stops", fmt.Errorf("aborts! %v %v", c.Command, c.Args))
 	return
+}
+
+```
+
+## 2. 最佳实践
+#### 2.1 高频熔断
+- rediy提供实现好的100w/10s 同key高频熔断
+- 如果需要自己订制，可以复制一份，自行修改
+
+```go
+rediy.Use(rediy.FuseHighFrequency)
+```
+
+#### 2.2 实时错误捕捉
+- 本类中间件适合放在最上面Use()
+- 即时写法无视错误,该中间件依旧能捕捉到
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/fwhezfwhez/rediy"
+)
+
+func main() {
+	pool := rediy.NewPool("localhost:6379", "", 0)
+	rediy.Use(reportErr)
+
+	conn := pool.Get()
+	defer conn.Close()
+	conn.Do("set", "uname", "ft", "wrong-arg")   // writing style will ignore error,but will captured in reportErr
+}
+
+func reportErr(c *rediy.Context) {
+	c.Next()
+
+	if c.Reply.Err() != nil {
+		fmt.Println("recv err", c.Reply.Err().Error())
+		return
+	}
 }
 
 ```

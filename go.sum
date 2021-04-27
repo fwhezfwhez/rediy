@@ -2,6 +2,8 @@ github.com/fwhezfwhez/cmap v1.2.1 h1:e+aqI3kNsniX0Oz5wu+V9AKsmtiGZOtduAfUblnKwjk
 github.com/fwhezfwhez/cmap v1.2.1/go.mod h1:tqnUpMbyjbqQzAxxWB2lWy8e44k4j33jXlepzFCOD0Q=
 github.com/fwhezfwhez/errorx v1.0.0 h1:V092yVEgwaFBKGtrtc0p2fl+lGaSi/GNLnOHRBmgFZw=
 github.com/fwhezfwhez/errorx v1.0.0/go.mod h1:epOraH2nrfmf4JUao5290NFuXw9t6MZnzgwoW5guABE=
+github.com/fwhezfwhez/fuse v0.0.0-20210311055334-adbaf7d50697 h1:wksKygiXWkK1PRTRnAudiSmiK7Gzl9ena+hjLy0XtgA=
+github.com/fwhezfwhez/fuse v0.0.0-20210311055334-adbaf7d50697/go.mod h1:Y03FoIV0AzgiZ+ugyMBWiJzsOotxQB/NqZLJE4sqDvs=
 github.com/fwhezfwhez/irr v0.0.0-20210406082319-0fad7ed6571d h1:+40Ei88YWWHLV8e2kv3/EJZH47T0DKjP7/pNS8k9EGM=
 github.com/fwhezfwhez/irr v0.0.0-20210406082319-0fad7ed6571d/go.mod h1:JGQX/FmQ64d5GcQLW5tfxV+YAsptOFxZ8NPzeeUXcU0=
 github.com/garyburd/redigo v1.6.2 h1:yE/pwKCrbLpLpQICzYTeZ7JsTA/C53wFTJHaEtRqniM=

@@ -1,12 +1,17 @@
 package rediy
 
 import (
+	"encoding/json"
+	"fmt"
+	"github.com/garyburd/redigo/redis"
 	"math"
+	"runtime/debug"
 )
 
 const ABORT = math.MaxInt32 - 10000
 
 type Context struct {
+	Conn    redis.Conn
 	Command string
 	Key     string
 	Args    []interface{}
@@ -27,7 +32,14 @@ func (ctx *Context) Next() {
 	s := len(ctx.handlers)
 	for ; ctx.offset < s; ctx.offset++ {
 		if !ctx.isAbort() {
-			ctx.handlers[ctx.offset](ctx)
+			func() {
+				defer func() {
+					if e := recover(); e != nil {
+						fmt.Printf("recover from \n %s\n", debug.Stack())
+					}
+				}()
+				ctx.handlers[ctx.offset](ctx)
+			}()
 		} else {
 			return
 		}
@@ -59,4 +71,13 @@ func (ctx *Context) isAbort() bool {
 
 func (ctx *Context) addHandler(f func(ctx *Context)) {
 	ctx.handlers = append(ctx.handlers, f)
+}
+
+func (ctx Context) Info() string {
+	b, _ := json.MarshalIndent(map[string]interface{}{
+		"command": ctx.Command,
+		"key":     ctx.Key,
+		"args":    ctx.Args,
+	}, "  ", "  ")
+	return string(b)
 }

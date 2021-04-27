@@ -38,6 +38,7 @@ func (c *Conny) Do(commandName string, args ...interface{}) (interface{}, error)
 	ctx.Command = commandName
 	ctx.Args = args
 	ctx.Key = key
+	ctx.Conn = c.Conn
 
 	ctx.Reply = newReply(c.Conn)
 
@@ -50,9 +51,7 @@ func (c *Conny) Do(commandName string, args ...interface{}) (interface{}, error)
 		wrapF.Use(Callbacks[i])
 	}
 
-	if StopFrequencyProtecting == false {
-		wrapF.Use(AlertRedisHighFrequent(commandName, key, &ctx.Reply))
-	}
+	// 	wrapF.Use(AlertRedisHighFrequent)
 
 	wrapF.Handle()
 
