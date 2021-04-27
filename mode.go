@@ -26,7 +26,7 @@ var (
 	disableColor = false
 )
 
-// Debugf will print content where called when MODE="debug"
+// Debugf will print content where called when MODE="debug".
 func Debugf(f string, v ...interface{}) {
 	if Mode == "dev" || Mode == "debug" {
 		_, file, l, _ := runtime.Caller(1)
